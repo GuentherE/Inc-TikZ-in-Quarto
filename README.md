@@ -66,22 +66,37 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
     -i INCREMENT NUMBER: one number is always required, option can be repeated multiple times;
                          if only one number is provided all increments up to that number are included.
   ```
-
+  - Example of Quarto code
   ````
+  ---
+  title: "Incremental TikZ drawings"
+  author: "Günther Erhard"
+  date: last-modified
+  format: 
+      revealjs:
+        code-line-numbers: false
+        theme: 
+          - "./my-theme.scss"
+  ---
+
+  ## Test incremental TikZ drawings
+
+    Just a first proof of concept for incremental display of TikZ drawings in Quarto revealjs presentations ...
+
   ::: {.r-stack}
   ```{bash}
-    quarto_tikz_increments.sh -f "./tikz-test.tikz" -i 0
+  quarto_tikz_increments.sh -f "./tikz-test.tikz" -i 0
   ```
 
   ```{r, cache = TRUE, echo = FALSE, engine = 'tikz', fig.ext = 'svg', engine.opts = list(dvisvgm.opts = "--font-format=woff", template = "./tikz-preamble.tex")}
-    #| fig-align: center
-    #| label: TikZ-Test
-    #| file: "./tikz-test-increments.tikz"
+  #| fig-align: center
+  #| label: TikZ-Test
+  #| file: "./tikz-test-increments.tikz"
   ```
 
   :::: {.fragment}
   ```{bash}
-    quarto_tikz_increments.sh -f "./tikz-test.tikz" -i 1
+  quarto_tikz_increments.sh -f "./tikz-test.tikz" -i 1
   ```
 
   ```{r, cache = TRUE, echo = FALSE, engine = 'tikz', fig.ext = 'svg', engine.opts = list(dvisvgm.opts = "--font-format=woff", template = "./tikz-preamble.tex")}
