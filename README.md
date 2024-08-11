@@ -41,6 +41,7 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
 - Insert start and end key tags into the TikZ drawing to mark the parts which have to be revealed
     - in my case: `% begin increment 1` and `% end increment 1`
     - example:
+
         ```
         % this one will be revealed on increment 1
         % begin increment number 1
@@ -65,3 +66,29 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
     -i INCREMENT NUMBER: one number is always required, option can be repeated multiple times;
                          if only one number is provided all increments up to that number are included.
   ```
+
+  ````
+  ::: {.r-stack}
+  ```{bash}
+    quarto_tikz_increments.sh -f "./tikz-test.tikz" -i 0
+  ```
+
+  ```{r, cache = TRUE, echo = FALSE, engine = 'tikz', fig.ext = 'svg', engine.opts = list(dvisvgm.opts = "--font-format=woff", template = "./tikz-preamble.tex")}
+    #| fig-align: center
+    #| label: TikZ-Test
+    #| file: "./tikz-test-increments.tikz"
+  ```
+
+  :::: {.fragment}
+  ```{bash}
+    quarto_tikz_increments.sh -f "./tikz-test.tikz" -i 1
+  ```
+
+  ```{r, cache = TRUE, echo = FALSE, engine = 'tikz', fig.ext = 'svg', engine.opts = list(dvisvgm.opts = "--font-format=woff", template = "./tikz-preamble.tex")}
+  #| fig-align: center
+  #| label: TikZ-Test-1
+  #| file: "./tikz-test-increments.tikz"
+  ```
+  ::::
+  :::
+````
