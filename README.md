@@ -38,15 +38,17 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
 ## My approach
 
 - Have only one complete TikZ drawing including all increments
-- Insert start and end key tags into the TikZ drawing to mark the parts which have to be revealed (in my case: `% begin increment 1` and `% end increment 1`)
-  ```
-  % this one will be revealed on increment 1
-  % begin increment number 1
-    \node[draw=black, rectangle, above=of node0] (node1)
-      {visible from increment 1};
-    \draw[] (node0) -- (node1);
-  % end increment number 1
-  ```
+- Insert start and end key tags into the TikZ drawing to mark the parts which have to be revealed
+    - in my case: `% begin increment 1` and `% end increment 1`
+    - example:
+        ```
+        % this one will be revealed on increment 1
+        % begin increment number 1
+          \node[draw=black, rectangle, above=of node0] (node1)
+            {visible from increment 1};
+          \draw[] (node0) -- (node1);
+        % end increment number 1
+       ```
 - Use only a single slide with `{.r-stack}` and the `{.fragment}` features
 - Create the incremental images on the fly by commenting out the hidded parts in the TikZ code with the help of a small bash script in a code chunk
   ```{bash}
