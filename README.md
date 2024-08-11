@@ -66,7 +66,9 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
     -i INCREMENT NUMBER: one number is always required, option can be repeated multiple times;
                          if only one number is provided all increments up to that number are included.
   ```
-  - Example of Quarto code
+
+- Example of Quarto code
+  
   ````
   ---
   title: "Incremental TikZ drawings"
