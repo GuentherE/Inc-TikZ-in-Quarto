@@ -37,7 +37,7 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
 
 ## My approach
 
-- Have only one complete TikZ drawing including all increments
+- Having only one complete TikZ drawing including all increments
 - Insert start and end key tags into the TikZ drawing to mark the parts which have to be revealed
     - in my case: `% begin increment 1` and `% end increment 1`
     - example:
@@ -51,7 +51,7 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
         % end increment number 1
        ```
 - Use only a single slide with `{.r-stack}` and the `{.fragment}` features
-- Create the incremental images on the fly by commenting out the hidded parts in the TikZ code with the help of a small bash script in a code chunk
+- Create the incremental images on the fly by commenting out the hidden parts in the TikZ code with the help of a small bash script in a code chunk
   ```{bash}
   quarto_tikz_increments.sh -d "./" -f "./tikz-test.tikz" -i 1
   ```
