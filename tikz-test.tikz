@@ -1,0 +1,42 @@
+\begin{tikzpicture}[x=1cm,y=1cm, background rectangle/.style={fill=white}, show background rectangle]
+
+  % Just a simple node whicg is always visible
+  \node[draw=black, rectangle] (node0) at (7,0.5) {always visible};
+
+  % this one will be visble on increment 1 and all following increments
+  % begin increment number 1
+   \node[draw=black, rectangle, above=of node0] (node1)
+     {visible from increment 1};
+     \draw[] (node0) -- (node1);
+  % end increment number 1
+
+  % this one will be visble on increment 1 and all following increments
+  % begin increment number 2
+   \node[draw=black, rectangle, left=of node0] (node2)
+     {visible only at increment 2};
+     \draw[] (node0) -- (node2);
+  % end increment number 2
+
+  % this one will be visble on increment 1 and all following increments
+  % begin increment number 3
+   \node[draw=black, rectangle, right=of node0] (node3)
+     {visible at increment 3};
+     \draw[] (node0) -- (node3);
+  % end increment number 3
+
+  % draw a grid with axis to read the dimensions of the necessary bounding box
+  % remove all comment outs from the increments to view the full expanded canvas
+  % \draw[step=0.5cm,red,very thin] (0,0) grid (14,3.5);
+  % \draw[thick,->] (0,0) -- (14,0) node[anchor=north west] {x axis};
+  % \draw[thick,->] (0,0) -- (0,3.5) node[anchor=south east] {y axis};
+  % \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12,13}
+  %   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+  % \foreach \y in {0,0.5,1,1.5,2.0,2.5,3.0}
+  %   \draw (0.5pt,\y cm) -- (-0.5pt,\y cm) node[anchor=east] {$\y$};
+
+  % define bounding boxto keep height an dwidth of drawing all the same regardless of visible elements
+  % \draw [green] (current bounding box.south west) rectangle (current bounding box.north east);
+  \useasboundingbox (0.3,0) rectangle (12.9,2.5);
+  % \draw [red] (current bounding box.south west) rectangle (current bounding box.north east);
+
+\end{tikzpicture}
