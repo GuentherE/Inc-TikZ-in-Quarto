@@ -14,7 +14,6 @@
 ```
 ````
 
--   see <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presentation>
 -   placing TikZ code inside chunk instead of an external file is also possible
 -   engine options can also be given in the curly braces: {r, cache = TRUE, echo = FALSE, engine = 'tikz', ...}
 
