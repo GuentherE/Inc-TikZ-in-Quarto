@@ -30,8 +30,8 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
 **Drawbacks:**
 
 -   Manual process
--   you need multiple versions of your TikZ drawing to generate the svg images
--   or you have to edit the TikZ drawing multiple times
+    -   you need multiple versions of your TikZ drawing to generate the svg images
+    -   or you have to edit the TikZ drawing multiple times
 -   Same effort neccesary when there is an update of the drawing
 -   Error prone
 
