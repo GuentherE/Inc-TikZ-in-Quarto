@@ -73,15 +73,15 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
   author: "Günther Erhard"
   date: last-modified
   format: 
-      revealjs:
-        code-line-numbers: false
-        theme: 
-          - "./my-theme.scss"
+    revealjs:
+      code-line-numbers: false
+      theme: 
+      - "./my-theme.scss"
   ---
 
   ## Test incremental TikZ drawings
 
-    Just a first proof of concept for incremental display of TikZ drawings in Quarto revealjs presentations ...
+  Just a first proof of concept for incremental display of TikZ drawings in Quarto revealjs presentations ...
 
   ::: {.r-stack}
   ```{bash}
