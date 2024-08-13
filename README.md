@@ -10,7 +10,7 @@ This a first proof of concept!
 ## Why?
 
 I have a lot of TikZ drawings created in the past. I wanted to include some of 
-them in a presentation, but TikZ in Quarto / Revealjs is only support by a r engine 
+them in a presentation, but TikZ in Quarto / Revealjs is only supported by a r engine 
 which converts the TikZ code into a graphics format like png or svg.
 
 If you want to reveal parts of your drawing step by step during the presentation you 
