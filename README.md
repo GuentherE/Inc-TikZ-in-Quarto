@@ -77,7 +77,7 @@ You can test the effect by yousrelf:
 
 - download the files in this repository into a single folder 
 - render the qmd file in RStudio or by issuing on command line: <br>
-  `quarto preview incremental-tikz-test.qmd --to revealjs --presentation --no-watch-inputs --no-browse` 
+  `quarto preview incremental-tikz-test.qmd --to revealjs --presentation` 
 
 #### Necessary steps
 
