@@ -9,7 +9,7 @@ format:
       - "./my-theme.scss"
 ---
 
-## Test incremental TikZ drawings
+## Test incremental TikZ drawings {.smaller}
 
 Just a first proof of concept for incremental display of TikZ drawings in Quarto revealjs presentations ...
 
