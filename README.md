@@ -5,6 +5,8 @@ This a first proof of concept!
 - It works, but is currently a hack
 - Should be implemented as a Filter or Plugin in Quarto / Revealjs at a later state
 
+![Example of qmd file above](https://github.com/GuentherE/Inc-TikZ-in-Quarto/blob/main/example.gif)
+
 ## Why?
 
 I have a lot of TikZ drawings created in the past. I wanted to include some of 
