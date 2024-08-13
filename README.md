@@ -14,7 +14,7 @@ them in a presentation, but TikZ in Quarto / Revealjs is only supported by a r e
 which converts the TikZ code into a graphics format like png or svg.
 
 If you want to reveal parts of your drawing step by step during the presentation you 
-have to create several versions of this graphics (preferable in svg to have scaling
+have to create several versions of this graphic (preferable in svg to have scaling
 ability). 
 
 I hated this manual approach and I didn't want to modify my drawings. So I came up with this hack.
