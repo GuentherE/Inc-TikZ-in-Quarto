@@ -4,8 +4,10 @@
 # Modifying a TikZ drawing file by commenting out code parts to create an incremental
 # image in a Quarto revealjs presentation (like Pause in Latex Beamer or animated slides in PowerPoint)
 
-VERSION="2024-08-10"
+VERSION="2024-08-14"
 # 2024-08-10: first version
+# 2024-08-14: bug fix for -i 0 - now you can include or exclude image parts from the basic drawing
+#						  by enclosing the code in "% $BEGINTAG 0" and "% $ENDTAG 0"
 
 ###########################################################
 # Adjust these variables to your taste:
@@ -143,12 +145,18 @@ then
     TMPARRAY[$i]=$i
     debuglog "TMPARRAY[$i]: ${TMPARRAY[$i]}"
 	done
-	debuglog "TMPARRAY: ${TMPARRAY[*]}"
+	debuglog "TMPARRAY-1: ${TMPARRAY[*]}"
 
 	if [ $INCCOUNT -eq 1 ]
 	then
-    TMPARRAY=( "${TMPARRAY[@]:$(( ${INCARRAY[0]} + 1 ))}" )
-		debuglog "TMPARRAY: ${TMPARRAY[*]}"
+		if [ ${INCARRAY[0]} -eq 0 ]
+		then
+			TMPARRAY=( "${TMPARRAY[@]:$(( ${INCARRAY[0]} + 1 ))}" )
+		else
+    	TMPARRAY=( "${TMPARRAY[@]:$(( ${INCARRAY[0]} + 1 ))}" )
+    	TMPARRAY=( "0" "${TMPARRAY[@]}" )
+    fi
+		debuglog "TMPARRAY-2: ${TMPARRAY[*]}"
 	else
 		debuglog "TMPARRAY before unset: ${TMPARRAY[*]}"
 		debuglog "INCARRAY before unset: ${INCARRAY[*]}"
