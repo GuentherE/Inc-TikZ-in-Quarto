@@ -68,7 +68,7 @@ See: <https://stackoverflow.com/questions/71760913/using-tikz-in-quarto-presenta
  
   **Cons**
 
-  - It's quick an dirty hack - should be implemented as filter or plugin
+  - It's a quick and dirty hack - should be implemented as filter or plugin
   - You need to define a bounding box to have the image always at the same size during the steps
   - If you want some drawing parts disappear in one of the following steps you need a background
     for your TikZ as normally they are transparent and r-stack just places one image on top of
@@ -105,7 +105,7 @@ You can test the effect by yousrelf:
 - Define the normally automatically by Tex created bounding box to the largest area
 
     ```
-    \useasboundingbox (0.3,0) rectangle (12.9,2.5);
+    \useasboundingbox [draw=white, line width=0] (0.3,0) rectangle (12.9,2.5);
     % Show bounding box for double checking
     % \draw [red] (current bounding box.south west) rectangle (current bounding box.north east);
     ```
