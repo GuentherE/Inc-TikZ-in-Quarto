@@ -4,10 +4,12 @@
 # Modifying a TikZ drawing file by commenting out code parts to create an incremental
 # image in a Quarto revealjs presentation (like Pause in Latex Beamer or animated slides in PowerPoint)
 
-VERSION="2024-08-14"
+VERSION="2024-12-29"
 # 2024-08-10: first version
 # 2024-08-14: bug fix for -i 0 - now you can include or exclude image parts from the basic drawing
-#						  by enclosing the code in "% $BEGINTAG 0" and "% $ENDTAG 0"
+#				by enclosing the code in "% $BEGINTAG 0" and "% $ENDTAG 0"
+# 2024-12-29: bug fix: if only one increment section was included then it was ignored. 
+#				TMPINC was not initialized as array.
 
 ###########################################################
 # Adjust these variables to your taste:
@@ -25,7 +27,7 @@ WORKFOLDER=""
 TMPARRAY=()
 INCARRAY=()
 INCCOUNT=0
-TMPINC=0
+TMPINC=()
 MAXINC=0
 
 function usage ()
@@ -79,32 +81,34 @@ do
         	WORKFOLDER=$1
         	if [ -d "$WORKFOLDER" ]
         	then
-          	cd "$WORKFOLDER"
-          	debuglog "Argument -d: set working directory to \"$(pwd)\" ..."
+          		cd "$WORKFOLDER"
+          		debuglog "Argument -d: set working directory to \"$(pwd)\" ..."
         	else
-          	echolog "Directory \"$WORKFOLDER\" does not exist!"
-          	exit 1
+          		echolog "Directory \"$WORKFOLDER\" does not exist!"
+          		exit 1
         	fi
         ;;
       -f ) shift
         	TIKZFILE=$1
         	if [ ! -f "$TIKZFILE" ]
         	then
-          	echolog "File \"$TIKZFILE\" does not exist"
-          	exit 1
+          		echolog "File \"$TIKZFILE\" does not exist"
+          		exit 1
         	else
-          	debuglog "Argument -f: \"$TIKZFILE\" found ..."
+          		debuglog "Argument -f: \"$TIKZFILE\" found ..."
         	fi
         ;;
       -i ) shift
         	if [ -n $1 ]
         	then
-          	INCARRAY+=( $1 )
-          	debuglog "Argument -i: Increment number ($INCCOUNT): ${INCARRAY[$INCCOUNT]}"
-          	INCCOUNT=$(( INCCOUNT + 1 ))
+          		INCARRAY+=( $1 )
+          		debuglog "Argument -i: Increment number ($INCCOUNT): ${INCARRAY[$INCCOUNT]}"
+          		INCCOUNT=$(( INCCOUNT + 1 ))
+          		debuglog "INCCOUNT: $INCCOUNT"
+          		debuglog "INCARRAY: ${INCARRAY[*]}"
         	else
-          	debuglog "Argument -i: No increments number(s) given"
-          	exit 1
+          		debuglog "Argument -i: No increments number(s) given"
+          		exit 1
         	fi
         ;;
     esac
@@ -124,6 +128,7 @@ TIKZOUTPUTFILE="${TIKZFILEBASE}${TIKZFILESUFFIX}.tikz"
 debuglog "$TIKZOUTPUTFILE"
 
 TMPINC=$(grep "$BEGINTAG [0-9]$" $TIKZFILE | awk '{ print $5 }')
+debuglog "TMPINC: $TMPINC"
 MAXINC=0
 for i in $TMPINC
 do
@@ -138,12 +143,12 @@ debuglog "MAXINC: $MAXINC"
 
 if [ $INCCOUNT -gt 0 ]
 then
-
 	TMPARRAY=()
 	for i in $(seq 0 $MAXINC)
 	do
-    TMPARRAY[$i]=$i
-    debuglog "TMPARRAY[$i]: ${TMPARRAY[$i]}"
+    	TMPARRAY[$i]=$i
+    	debuglog "INCARRAY[$i]: ${INCARRAY[$i]}"
+    	debuglog "TMPARRAY[$i]: ${TMPARRAY[$i]}"
 	done
 	debuglog "TMPARRAY-1: ${TMPARRAY[*]}"
 
